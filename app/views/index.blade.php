@@ -1,0 +1,1 @@
+<h1>WELCOME USER , your email is {{Auth::user()->get()->email}}</h1>

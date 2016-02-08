@@ -15,6 +15,8 @@ return array(
 
 	'paths' => array(__DIR__.'/../views'),
 
+	'cache' => false,
+
 	/*
 	|--------------------------------------------------------------------------
 	| Pagination View

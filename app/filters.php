@@ -54,6 +54,11 @@ Route::filter('auth.basic', function()
 	return Auth::basic();
 });
 
+Route::filter('auth.user', function()
+{
+	if (Auth::user()->guest()) return Redirect::guest('login');
+});
+
 /*
 |--------------------------------------------------------------------------
 | Guest Filter
@@ -88,3 +93,4 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
