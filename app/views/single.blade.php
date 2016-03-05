@@ -87,42 +87,22 @@
                     <div class="td-post-featured-image">
                         <a href="#" class="td-modal-image">
 
-                            {{HTML::image($article->getImage->image, '', array('class' => 'entry-thumb td-animation-stack-type0-2', 'width'=>'696px','height'=>'464px'))}}
+                            {{HTML::image($article->getImage(), '', array('class' => 'entry-thumb td-animation-stack-type0-2', 'width'=>'696px','height'=>'464px'))}}
                         </a>
                     </div>
                     <div class="td-paragraph-padding-1">
 
-
-                        {{--<h3><strong>The main thing that you have to remember on this journey is just be nice to everyone and always smile.</strong></h3>--}}
                         <p>{{$article->body}}</p>
                     </div>
 
-                    {{--<div class="td-paragraph-padding-1">--}}
-                        {{--<h3><strong>You must learn one thing. The world was made to be free in. Give up all the other worlds Except the one in which you belong.</strong></h3>--}}
-                        {{--<p>So simple, yet so essential, the white shirt is the foundation of any wardrobe. It’s also the most multi-functional item, taking you from work to play with just the quick unfastening of a couple of buttons. It matter what style fitted boyfriend etc or even what fabric from silk to heavy cotton go with whatever suits your personal style best.</p>--}}
-                        {{--<p>Calvin Klein known for <strong><a href="#">launching the careers of such svelte</a></strong> models as Brooke Shields and Kate Moss to cast a model who deviates from the size standard and make a fuss about it to Dalbesio who spent years.</p>--}}
-                        {{--<ul class="td-arrow-list">--}}
-                            {{--<li>must explain to you how all this mistaken idea of denouncing</li>--}}
-                            {{--<li>pleasure and praising pain was born and I will give you a complete account</li>--}}
-                            {{--<li>the system and expound the actual teachings</li>--}}
-                            {{--<li>great explorer of the truth, the master builder of human happiness.</li>--}}
-                        {{--</ul>--}}
-                        {{--<p>Adderall and flirting with bulimia in an attempt to whittle herself to represents progress released this campaign and were like Whoa look this plus size girl in our campaign from work to play with just the quick unfastening of a couple of buttons.</p>--}}
-                    {{--</div>--}}
-                    <blockquote>
+                    
+                  <!--   <blockquote>
                         <div class="td-paragraph-padding-2">
                             <p>Be the change that you wish to see in the world</p>
                         </div>
-                    </blockquote>
-                    <div class="td-paragraph-padding-1">
-                        <p>They released me in this campaign with everyone else there no distinction. It’s not a separate section for plus size girls she says.</p>
-                    </div>
-                    <div class="td-paragraph-padding-1">
-                        <p>There was a time in the industry not too long ago, when it seemed that the high fashion world was using plus size models as a headline-grabbing gimmick see the groundbreaking
-                            <a href="#"> <i>Italian Vogue</i> </a> cover featuring Tara Lynn, Candice Huffine, and Robyn Lawley in June 2016.
-                        </p>
-                        <p> <em>Related:</em> <a href="#"><i> Calendar Gets Its First Plus-Size Model 2016</i></a> </p>
-                    </div>
+                    </blockquote> -->
+                    
+                    
                     <footer>
                         <div class="td-post-source-tags"> </div>
                         <div class="td-post-sharing td-post-sharing-bottom td-with-like">

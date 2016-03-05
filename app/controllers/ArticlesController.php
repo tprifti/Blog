@@ -1,6 +1,7 @@
 <?php
 
-class ArticlesController extends \BaseController {
+class ArticlesController extends \BaseController
+{
 
 
 	/**
@@ -35,7 +36,7 @@ class ArticlesController extends \BaseController {
 	{
 		$rules = Article::$rules;
 		$validator = Validator::make(Input::all(), $rules);
-		if($validator->fails()){
+		if ($validator->fails()) {
 			$messages = $validator->messages();
 			return $messages;
 		}
@@ -48,15 +49,15 @@ class ArticlesController extends \BaseController {
 		$article->save();
 
 
-    $thumb = new Photo;
-    $image = Input::file('image');
-    $filename = time(). '-' .$image->getClientOriginalName();
-    $destinationPath = public_path('thumbs/' . $filename);
-    $a =Image::make($image->getRealPath())->save($destinationPath);
-    // SAVE TO DB
-    $thumb->image = 'thumbs/'. $filename;
-    $thumb->article_id = $article->id;
-	$thumb->save();
+		$thumb = new Photo;
+		$image = Input::file('image');
+		$filename = time() . '-' . $image->getClientOriginalName();
+		$destinationPath = public_path('thumbs/' . $filename);
+		$a = Image::make($image->getRealPath())->save($destinationPath);
+		// SAVE TO DB
+		$thumb->image = 'thumbs/' . $filename;
+		$thumb->article_id = $article->id;
+		$thumb->save();
 
 		return View::make('admin.home');
 
@@ -66,7 +67,7 @@ class ArticlesController extends \BaseController {
 	 * Display the specified resource.
 	 * GET /articles/{id}
 	 *
-	 * @param  int  $id
+	 * @param  int $id
 	 * @return Response
 	 */
 	public function show($slug)
@@ -80,12 +81,12 @@ class ArticlesController extends \BaseController {
 	 * Show the form for editing the specified resource.
 	 * GET /articles/{id}/edit
 	 *
-	 * @param  string  $slug
+	 * @param  string $slug
 	 * @return Response
 	 */
 	public function edit($slug)
 	{
-		$articles  = Article::where('slug', $slug)->first();
+		$articles = Article::where('slug', $slug)->first();
 		return View::make('admin.editpost')->with('articles', $articles, $slug);
 	}
 
@@ -93,15 +94,15 @@ class ArticlesController extends \BaseController {
 	 * Update the specified resource in storage.
 	 * PUT /articles/{id}
 	 *
-	 * @param  int  $id
+	 * @param  int $id
 	 * @return Response
 	 */
 	public function update($slug)
 	{
-		$article = Article::where('slug',$slug)->first();
-		 $article->title = Input::get('title');
-		 $article->body = Input::get('body');
-		 $article->save();
+		$article = Article::where('slug', $slug)->first();
+		$article->title = Input::get('title');
+		$article->body = Input::get('body');
+		$article->save();
 
 
 		return View::make('admin.home')->withMessage('Article Saved!');
@@ -111,9 +112,9 @@ class ArticlesController extends \BaseController {
 	{
 
 		$image = Input::file('file');
-		$filename = time(). '-' .$image->getClientOriginalName();
+		$filename = time() . '-' . $image->getClientOriginalName();
 		$destinationPath = public_path('source/' . $filename);
-		$a =Image::make($image->getRealPath())->save($destinationPath);
+		$a = Image::make($image->getRealPath())->save($destinationPath);
 		return $destinationPath;
 
 	}
@@ -121,14 +122,20 @@ class ArticlesController extends \BaseController {
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /articles/{id}
+	 * DELETE /articles/{slug}/delete
 	 *
-	 * @param  int  $id
+	 * @param  int $slug
 	 * @return Response
 	 */
-	public function destroy($id)
-	{
-		//
-	}
 
+
+	public function removeArticle($slug)
+	{
+		$item = Article::find($slug);
+		if (!is_null($item)) {
+			$item->delete();
+		}
+		return "Item deleted";
+
+	}
 }

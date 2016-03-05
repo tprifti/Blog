@@ -30,6 +30,7 @@ class Article extends Eloquent implements UserInterface, RemindableInterface, Sl
 	 * @var array
 	 */
 
+
 	public static $rules = [
 		'title' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/|max:35'
 
@@ -42,7 +43,17 @@ class Article extends Eloquent implements UserInterface, RemindableInterface, Sl
 	}
 
 	public function getImage(){
-		return $this->hasOne('Photo');
+		return $this->hasOne('Photo', 'article_id', 'id')->first()->image;
+	}
+
+	public function getAdmin()
+	{
+		return DB::table('admins')->select('username')->where('id',$this->admin_id)->first()->username;
+
+	}
+
+	public function category(){
+		return $this->belongsTo('Category');
 	}
 
 

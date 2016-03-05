@@ -6,7 +6,7 @@ class Category extends \Eloquent {
 
 	public $timestamps = false ;
 
-	public function article(){
-		$this->hasOne('Article');
+	public function articles(){
+		$this->hasMany('Article');
 	}
 }

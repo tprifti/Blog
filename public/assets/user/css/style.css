@@ -378,6 +378,7 @@ a {
     width: 100%;
     display: block;
 }
+
 .owl-controls .owl-page {
     cursor: pointer;
 }
@@ -632,7 +633,7 @@ html {
 }
 .meta-item {
     margin: 0 1em;
-    font-size: 12px;
+    font-size: 17px;
     color: white;
 }
 .meta-item span {
@@ -649,7 +650,12 @@ html {
 .item-title h3 {
     line-height: 1.3em;
     color: #fff;
-    font-size: 1.5em;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+    font-size: 1.8em;
 }
 .fa {
     color: #FF5722;
@@ -681,6 +687,18 @@ html {
     .slider-item-content {
         top: 20%;
     }
+}
+
+@media screen  and (min-width:481px) and (max-width: 625px) {
+    .item-title{
+        line-height: 1.2em;
+        font-size: 0.6em;
+    }
+    .item-readmore {
+        margin-top: 20px;
+    }
+
+
 }
 html {
     font-family: sans-serif;
@@ -981,7 +999,6 @@ h4 {
     color: #fff;
     margin-right: 5px;
     padding: 3px 6px 4px;
-    display: block;
     vertical-align: top;
 }
 .td-post-category:hover {
@@ -1017,9 +1034,9 @@ h4 {
         width: 100%;
     }
 }
-.td_module_2 .td-module-thumb {
-    height: 160px;
-}
+/*.td_module_2 .td-module-thumb {*/
+    /*height: 160px;*/
+/*}*/
 @media (min-width: 1019px) and (max-width: 1140px) {
     .td_module_2 .td-module-thumb {
         height: 148px;

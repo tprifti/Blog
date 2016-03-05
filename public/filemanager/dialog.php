@@ -293,7 +293,7 @@ $get_params = http_build_query($get_params);
 		    dictResponseError: "SERVER ERROR",
 		    paramName: "file", // The name that will be used to transfer the file
 		    maxFilesize: <?php echo $MaxSizeUpload; ?>, // MB
-		    url: "/blog/public/uploadimg",
+		    url: "/uploadimg",
 		    <?php if($apply!="apply_none"){ ?>
 		    init: function() {
 			    this.on("success", function(file,res) { 

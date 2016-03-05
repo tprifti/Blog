@@ -11,10 +11,7 @@
 |
 */
 
-Route::get('/', function()
-{
-return View::make('home');
-});
+Route::get('/', 'HomeController@showWelcome');
 
 Route::get('login','AuthController@getUserLogin');
 
@@ -36,9 +33,16 @@ Route::get('admin/article/new', function(){
 });
 
 Route::get('article/{slug}/edit', 'ArticlesController@edit');
-Route::resource('article', 'ArticlesController');
-// Route::post('/article/{slug}',array('uses'=>'ArticlesController@update', 'as' => 'update.article'));
+Route::resource('article', 'ArticlesController',['except' => ['destroy']]);
+Route::post('/article/{slug}/delete',array('uses'=>'ArticlesController@removeArticle', 'as' => 'remove.article'));
 Route::post('/uploadimg','ArticlesController@uploadsource');
+
+Route::get('test', function(){
+
+    $all = Article::all();
+    $h = $all->take(5)->slice(1);
+    return $h;
+});
 
 
 
@@ -48,8 +52,6 @@ Route::get('/articles/all','AdminsController@ListAllArticles');
 
 Route::post('category/add',array('uses' => 'AdminsController@AddCategory', 'as' => 'add.category'));
 
-
-Route::groy
 
 
 

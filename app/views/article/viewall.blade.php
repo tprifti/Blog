@@ -37,9 +37,9 @@
                                 <td><span class="label label-success">Approved</span></td>
                                 <td>
                                         <span class="btn-group">
-                                            <a href="{{url('article/'.$article->slug)}}" class="btn btn-success">Preview</a>
-                                            <a href="{{url('article/'.$article->slug.'/edit')}}" class="btn btn-warning" style="margin: 0 10px 0 10px;">Edit</a>
-                                            <a href="{{url('article/'.$article->slug.'/delete')}}" class="btn btn-danger">Delete</a>
+                                            <a href="{{route('article.show',$article->slug)}}" class="btn btn-success">Preview</a>
+                                            <a href="{{route('article.edit',$article->slug)}}" class="btn btn-warning" style="margin: 0 10px 0 10px;">Edit</a>
+                                            <a href="{{route('remove.article',$article->slug)}}" class="btn btn-danger">Delete</a>
                                         </span>
                                 </td>
                             </tr>

@@ -74,8 +74,8 @@
             relative_urls : false,
             convert_urls : true,
             remove_script_host : false,
-            document_base_url : "http://localhost:8080/blog/public",
-            external_filemanager_path:"http://localhost:8080/blog/public/filemanager/",
+            document_base_url : "http://www.awesome.dev",
+            external_filemanager_path:"http://www.awesome.dev/filemanager/",
             filemanager_title:"Responsive Filemanager" ,
             external_plugins: { "filemanager" : "{{URL::to('filemanager/plugin.min.js')}}"}
 
