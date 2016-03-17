@@ -48,9 +48,34 @@ Route::get('test', function(){
 
 // ADMIN DASHBOARD ROUTES
 
+Route::get('api/articles', function(){
+
+    $articles = Article::orderBy('created_at','DESC')->get();
+
+    return $articles;
+
+});
+
+//Route::get('getdata', function(){
+//
+//    $term = Str::lower(Input::get('term'));
+//
+//    $data = Article::where('title', 'LIKE', '%'.$term.'%')->groupBy('title')->get();
+//
+//    foreach ($data as $v) {
+//    	$return_array[] = array('value' => $v->title);
+//    }
+//
+//    return Response::json($return_array);
+//});
+
 Route::get('/articles/all','AdminsController@ListAllArticles');
 
 Route::post('category/add',array('uses' => 'AdminsController@AddCategory', 'as' => 'add.category'));
+
+
+
+
 
 
 
