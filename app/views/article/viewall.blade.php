@@ -30,24 +30,24 @@
                             <th>Action</th>
                         </tr>
                         </thead>
-                        @foreach($articles as $article)
+                        {{--@foreach($articles as $article)--}}
                         <tbody id="tbodyid">
-                            <tr>
-                                <td>{{$article->id}}</td>
-                                <td>{{$article->title}}</td>
-                                <td>{{ date('F d, Y',strtotime($article->created_at)) }}</td>
+                            {{--<tr>--}}
+                                {{--<td>{{$article->id}}</td>--}}
+                                {{--<td>{{$article->title}}</td>--}}
+                                {{--<td>{{ date('F d, Y',strtotime($article->created_at)) }}</td>--}}
 
-                                <td><span class="label label-success">Approved</span></td>
-                                <td>
-                                    <span class="btn-group">
-                                        <a href="{{route('article.show',$article->slug)}}" class="btn btn-success">Preview</a>
-                                        <a href="{{route('article.edit',$article->slug)}}" class="btn btn-warning" style="margin: 0 10px 0 10px;">Edit</a>
-                                        <a href="{{route('remove.article',$article->slug)}}" class="btn btn-danger">Delete</a>
-                                    </span>
-                                </td>
-                            </tr>
+                                {{--<td><span class="label label-success">Approved</span></td>--}}
+                                {{--<td>--}}
+                                    {{--<span class="btn-group">--}}
+                                        {{--<a href="{{route('article.show',$article->slug)}}" class="btn btn-success">Preview</a>--}}
+                                        {{--<a href="{{route('article.edit',$article->slug)}}" class="btn btn-warning" style="margin: 0 10px 0 10px;">Edit</a>--}}
+                                        {{--<a href="{{route('remove.article',$article->slug)}}" class="btn btn-danger">Delete</a>--}}
+                                    {{--</span>--}}
+                                {{--</td>--}}
+                            {{--</tr>--}}
                             </tbody>
-                        @endforeach
+                        {{--@endforeach--}}
                     </table>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
@@ -74,6 +74,8 @@
                                 $created_at = data[index].created_at,
                                 $slug = data[index].slug,
 
+                                $article = $("#tbodyid");
+
                                         //Adding td **********SHOULD FIX THIS**********
                                         $html = [];
                                 $html.push("<tr>");
@@ -82,21 +84,20 @@
                                 $html.push("<td>"+$created_at+"</td>");
                                 $html.push("<td>");
                                 $html.push("<span class='label label-success'>Approved");
+                                $html.push("</td>")
                                 $html.push("</span>");
-
+                                $html.push("<td>");
                                 $html.push("<span class='btn-group'>");
                                 $html.push("<a href='#' class='btn btn-success'>Preview</a>");
                                 $html.push("<a href='#' class='btn btn-warning' style='margin: 0 10px 0 10px;'>Edit</a>");
                                 $html.push("<a href='#' class='btn btn-danger'>Delete</a>");
+                                $html.push("</td>");
                                 $html.push("</span>");
                                 $html.push("</tr>");
 
 
-
-                                $('#tbodyid').append($html);
-
-
-
+                                $($article).append($html.join(""));
+                                
                             });
 
                     },
