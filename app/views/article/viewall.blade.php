@@ -12,7 +12,7 @@
                     <h3 class="box-title">Responsive Hover Table</h3>
                     <div class="box-tools">
                         <div class="input-group" style="width: 150px;">
-                            <input type="search" name="table_search" class="form-control input-sm pull-right" placeholder="Search" ng-model="title">
+                            <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search" ng-model="search">
                             <div class="input-group-btn">
                                 <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
                             </div>
@@ -23,7 +23,7 @@
                 <div>
                 </div>
                  <ul id="list"></ul>
-                    <table class="table table-hover" id="articlesTable">
+                    <table class="table table-hover">
                         <thead>
                         <tr>
                             <th>ID</th>
@@ -34,7 +34,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="article in articles">
+                            <tr ng-repeat="article in articles | filter: search | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
+                            
                                 <td> [[ article.id ]]</td>
                                 <td> [[ article.title ]]</td>
                                 <td> [[ article.created_at]]</td>
@@ -42,15 +43,16 @@
                                 <td><span class="label label-success">Approved</span></td>
                                 <td>
                                     <span class="btn-group">
-                                        <a href="#" class="btn btn-success">Preview</a>
-                                        <a href="#" class="btn btn-warning" style="margin: 0 10px 0 10px;">Edit</a>
+                                        <a href="/article/[[article.slug]]" class="btn btn-success">Preview</a>
+                                        <a href="/article/[[article.slug]]/edit" class="btn btn-warning" style="margin: 0 10px 0 10px;">Edit</a>
                                         <a href="#" class="btn btn-danger">Delete</a>
                                     </span>
                                 </td>
                             </tr>
                             </tbody>
-                       
+                        <pagination page="currentPage" max-size="noOfPages" total-items="totalArticles" items-per-page="entryLimit"></pagination>
                     </table>
+
                 </div><!-- /.box-body -->
                 
             </div><!-- /.box -->
@@ -61,9 +63,10 @@
 
 
 @section('scripts')
+
 {{HTML::script('app/js/angular.min.js')}}
+{{HTML::script('app/js/ui-bootstrap-0.10.0.js')}}
 {{HTML::script('app/js/main.js')}}
-{{HTML::script('/app/controllers/MainController.js')}}
-    
+{{HTML::script('app/controllers/MainController.js')}}    
    
 @stop

@@ -50,9 +50,9 @@ Route::get('test', function(){
 
 Route::get('api/articles', function(){
 
-    $articles = Article::all();
+    $articles = Article::orderBy('created_at','DESC')->get();
 
-    return json_encode($articles);
+    return $articles;
 
 });
 
