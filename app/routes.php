@@ -50,11 +50,12 @@ Route::get('test', function(){
 
 Route::get('api/articles', function(){
 
-    $articles = Article::orderBy('created_at','DESC')->get();
+    $articles = Article::all();
 
-    return $articles;
+    return json_encode($articles);
 
 });
+
 
 //Route::get('getdata', function(){
 //

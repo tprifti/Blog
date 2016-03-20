@@ -126,7 +126,6 @@ return array(
 		'Way\Generators\GeneratorsServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
 		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
-		'yajra\Datatables\DatatablesServiceProvider',
 		
 
 	),
@@ -196,9 +195,7 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Image' 		  => 'Intervention\Image\Facades\Image',
-		'Datatables'      => 'yajra\Datatables\Datatables',
 		
-
 	),
 
 );
