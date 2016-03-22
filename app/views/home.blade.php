@@ -41,20 +41,17 @@
             <ul class="nav navbar-nav navbar-left">
                 <li><a href="index.html">Home</a>
                 </li>
-                <li><a href="bota.html">Bota</a>
+                <li><a href="">########</a>
                 </li>
-                <li><a href="politike.html">Politike</a>
+                <li><a href="">########</a>
                 </li>
-                <li><a href="aktualitet.html">Aktualitet</a>
+                <li><a href="">########</a>
                 </li>
-                <li><a href="teknologji.html">Teknologji</a>
+                <li><a href="">########</a>
                 </li>
-                <li><a href="sport.html">Sport</a>
+                <li><a href="">#######</a>
                 </li>
-                @if(Auth::user()->get())
-                <li><a href="#">{{Auth::user()->get()->username}}</a>
-                </li>
-                @endif
+               
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-heart-o fa-lg"></i></a>
@@ -158,7 +155,7 @@
                                         </a>
                                     </div>
                                     <div class="item-details">
-                                        <h3 itemprop="name" class="entry-title td-module-title"><a itemprop="url" href="" rel="bookmark" title="">{{$rihanna->title}}</a></h3>
+                                        <h3 itemprop="name" class="entry-title td-module-title"><a itemprop="url" href="{{route('article.show',$rihanna->slug)}}" rel="bookmark" title="">{{$rihanna->title}}</a></h3>
                                         <div class="td-module-meta-info">
                                             <div class="td-post-date">
                                                 {{date('F d, Y',strtotime($rihanna->created_at))}}
@@ -491,23 +488,10 @@
             slideSpeed: 200,
             singleItem: true,
             paginationNumbers: true,
-            afterUpdate: function() {
-                updateSize();
-            },
-            afterInit: function() {
-                updateSize();
-            }
+            
         });
 
-        function updateSize() {
-            var minHeight = parseInt($('.owl-item').eq(0).css('height'));
-            $('.owl-item').each(function() {
-                var thisHeight = parseInt($(this).css('height'));
-                minHeight = (minHeight <= thisHeight ? minHeight : thisHeight);
-
-            });
-            $('.owl-wrapper-outer').css('height', minHeight + 'px');
-        }
+    
     });
 </script>
 </body>

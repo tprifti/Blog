@@ -56,7 +56,7 @@ $config = array(
 	|
 	*/
 
-	'base_url' => 'http://www.awesome.dev',//((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] && ! in_array(strtolower($_SERVER['HTTPS']), array( 'off', 'no' ))) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'],
+	'base_url' => ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] && ! in_array(strtolower($_SERVER['HTTPS']), array( 'off', 'no' ))) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -105,7 +105,7 @@ $config = array(
 	|
 	*/
 
-	'access_keys' => array(),
+	'access_keys' => array($akey=md5(12412412)),
 
 	//--------------------------------------------------------------------------------------------------------
 	// YOU CAN COPY AND CHANGE THESE VARIABLES INTO FOLDERS config.php FILES TO CUSTOMIZE EACH FOLDER OPTIONS
@@ -119,7 +119,7 @@ $config = array(
 	| in Megabytes
 	|
 	*/
-	'MaxSizeUpload' => 100,
+	'MaxSizeUpload' => 4,
 
 
 	/*

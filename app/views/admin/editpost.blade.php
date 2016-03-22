@@ -45,7 +45,9 @@
             document_base_url : "http://www.awesome.dev",
             external_filemanager_path:"http://www.awesome.dev/filemanager/",
             filemanager_title:"Responsive Filemanager" ,
+            
             external_plugins: { "filemanager" : "{{URL::to('filemanager/plugin.min.js')}}"}
+
 
 
 

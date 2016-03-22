@@ -32,7 +32,8 @@ class Article extends Eloquent implements UserInterface, RemindableInterface, Sl
 
 
 	public static $rules = [
-		'title' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/|max:35'
+		'title' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/|max:35',
+		'image' => 'mimes:jpg,jpeg,bmp,png|max:4000'
 
 	];
 
@@ -56,5 +57,15 @@ class Article extends Eloquent implements UserInterface, RemindableInterface, Sl
 		return $this->belongsTo('Category');
 	}
 
+
+public function isValid($data)
+    {
+        $validator = Validator::make($data, static::$rules, $this->messages);
+        if ($validator->passes()) return true;
+
+        $this->errors = $validator->messages();
+        return false;
+
+    }
 
 }

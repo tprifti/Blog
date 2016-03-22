@@ -35,13 +35,11 @@ Route::get('admin/article/new', function(){
 Route::get('article/{slug}/edit', 'ArticlesController@edit');
 Route::resource('article', 'ArticlesController',['except' => ['destroy']]);
 Route::post('/article/{slug}/delete',array('uses'=>'ArticlesController@removeArticle', 'as' => 'remove.article'));
-Route::post('/uploadimg','ArticlesController@uploadsource');
+Route::post('/uploadimg','ArticlesController@uploadsource'); 
 
 Route::get('test', function(){
 
-    $all = Article::all();
-    $h = $all->take(5)->slice(1);
-    return $h;
+    return View::make('test');
 });
 
 

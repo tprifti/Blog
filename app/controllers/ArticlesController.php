@@ -53,7 +53,7 @@ class ArticlesController extends \BaseController
 		$image = Input::file('image');
 		$filename = time() . '-' . $image->getClientOriginalName();
 		$destinationPath = public_path('thumbs/' . $filename);
-		$a = Image::make($image->getRealPath())->save($destinationPath);
+		$a = Image::make($image->getRealPath())->fit(1280,720)->save($destinationPath,50);
 		// SAVE TO DB
 		$thumb->image = 'thumbs/' . $filename;
 		$thumb->article_id = $article->id;
@@ -110,15 +110,18 @@ class ArticlesController extends \BaseController
 
 	public function uploadsource()
 	{
-
 		$image = Input::file('file');
+		
+		if ($image->isValid(Input::file('file'))) {
 		$filename = time() . '-' . $image->getClientOriginalName();
 		$destinationPath = public_path('source/' . $filename);
-		$a = Image::make($image->getRealPath())->save($destinationPath);
-		return $destinationPath;
+		$a = Image::make($image->getRealPath())->save($destinationPath,50);
+		return $filename;
 
+		}	else {
+			return Redirect::back()->withErrors($image->errors);
+		}
 	}
-
 
 	/**
 	 * Remove the specified resource from storage.

@@ -25,12 +25,12 @@ class HomeController extends BaseController {
 		$healthArticles = Article::where('category_id',$gethealth)->orderBy('created_at', 'DESC')->get();
 		$getlifstyle = Category::where('category', 'Lifestyle')->first()->id;
 		$latestArticles = Article::orderBy('created_at', 'DESC')->take(10)->get();
-		$articles = Article::where('category_id', $getlifstyle)->orderBy('created_at','DESC')->get();
+		$articles = Article::where('category_id', $getlifstyle)->orderBy('created_at','DESC')->take(10)->get();
 		$entertainmentHeader = $entertainmentArticles->take(1);
 		$eArticles = $entertainmentArticles->take(5)->slice(1);
 		$slides= $latestArticles->take(4);
 		$related = $articles->take(2);
-		$small = $articles->slice(2);
+		$small = $articles->slice(2)->take(6);
 		$gethealthArticle = $healthArticles->take(1);
 		$smallHealthArticles = $healthArticles->take(5)->slice(1);
 
