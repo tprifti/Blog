@@ -132,9 +132,9 @@ class ArticlesController extends \BaseController
 	 */
 
 
-	public function removeArticle($slug)
+	public function removeArticle($id)
 	{
-		$item = Article::find($slug);
+		$item = Article::find(id);
 		if (!is_null($item)) {
 			$item->delete();
 		}

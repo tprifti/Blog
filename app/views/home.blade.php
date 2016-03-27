@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Blog Template for Bootstrap</title>
+    <title>Title of my website</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -65,8 +65,8 @@
 <div class="container">
 
     <div class="blog-header">
-        <h1 class="blog-title">The Bootstrap Blog</h1>
-        <p class="lead blog-description">The official example template of creating a blog with Bootstrap.</p>
+        <h1 class="blog-title">My blog name</h1>
+        <p class="lead blog-description">My blog moto(should find )</p>
     </div>
 
     <div class="row">
@@ -74,7 +74,7 @@
         <div class="col-sm-8 blog-main">
 
             <div class="row">
-                <h4 class="block-title"><span>LATEST NEWS</span></h4>
+                <h4 class="block-title slider"><span>RELATED POSTS</span></h4>
                 <div id="owl-example" class="owl-carousel">
                     @foreach($slides as $slide)
                     <div>
@@ -108,9 +108,10 @@
             </div>
             <!-- HERE STARTS SOME SHIT-->
             <div class="row">
-                <div class="td_block_wrap td_block_2   td-pb-border-top">
-                    <h4 class="block-title"><span>LIFESTYLE</span></h4>
-
+            <span>
+                <div class="td_block_wrap td_block_2  td-pb-border-top">
+                    <h4 class="block-title lifestyle"><span>LIFESTYLE</span></h4>
+   </span>
                     <div class="td_block_inner">
                         @foreach($related->chunk(2) as $test)
                         <div class="td-block-row">
@@ -184,7 +185,7 @@
             <div class="row">
 
                 <div class="td_block_wrap td_block_1  td_with_ajax_pagination td-pb-border-top">
-                    <h4 class="block-title"><span style="margin-right: 0px;">HEALTH</span></h4>
+                    <h4 class="block-title health"><span style="margin-right: 0px;">HEALTH</span></h4>
                     <div  class="td_block_inner">
 
                         <div class="td-block-row">
@@ -228,7 +229,7 @@
                                 @foreach($smallHealthArticles as $smallArticle)
                                 <div class="td_module_6 td_module_wrap " itemscope="" itemtype="http://schema.org/Article">
                                     <div class="td-module-thumb">
-                                        <a href="http://demo.tagdiv.com/newspaper/td-post-microsoft-subsumes-open-tech-unit-back-inside-mothership/" rel="bookmark" title="Microsoft Subsumes Open Tech Unit Back Inside Mothership"><img width="100" height="70" itemprop="image" class="entry-thumb " src="http://demo.tagdiv.com/newspaper/wp-content/uploads/2015/04/32-100x70.jpg" alt="" title="Microsoft Subsumes Open Tech Unit Back Inside Mothership">
+                                        <a href="http://demo.tagdiv.com/newspaper/td-post-microsoft-subsumes-open-tech-unit-back-inside-mothership/" rel="bookmark" title="Microsoft Subsumes Open Tech Unit Back Inside Mothership"><img width="100" height="70" itemprop="image" class="entry-thumb " src="{{$smallArticle->getImage()}}" alt="" title="Microsoft Subsumes Open Tech Unit Back Inside Mothership">
                                         </a>
                                     </div>
                                     <div class="item-details">
@@ -262,7 +263,7 @@
             <div class="row">
 
                 <div class="td_block_wrap td-pb-border-top">
-                    <h4 class="block-title"><span style="margin-right: 0px;">Entertainment</span></h4>
+                    <h4 class="block-title entertainment"><span style="margin-right: 0px;">ENTERTAINMENT</span></h4>
                     <div  class="td_block_inner">
 
                         <div class="td-block-row">
@@ -346,7 +347,7 @@
                 <div class="td-pb-span8 td-main-content" role="main">
                     <div class="td-ss-main-content">
                         <div class="clearfix"></div>
-                        <h4 class="block-title"><span>LATEST ARTICLES</span></h4>
+                        <h4 class="block-title latest"><span>LATEST POSTS</span></h4>
 
                         @foreach($latestArticles->chunk(2) as $latestArticle)
                         <div class="td-block-row">
@@ -399,15 +400,6 @@
 
 
             </div>
-
-            <nav>
-                <ul class="pager">
-                    <li><a href="#">Previous</a>
-                    </li>
-                    <li><a href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
 
         </div>
         <!-- /.blog-main -->
@@ -484,8 +476,8 @@
     $(document).ready(function() {
         $("#owl-example").owlCarousel({
             items: 1,
-            autoPlay: false,
-            slideSpeed: 200,
+            autoPlay: true,
+            slideSpeed: 30,
             singleItem: true,
             paginationNumbers: true,
             

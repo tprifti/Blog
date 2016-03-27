@@ -26,15 +26,15 @@
             <ul class="nav navbar-nav navbar-left">
                 <li><a href="index.html">Home</a>
                 </li>
-                <li><a href="bota.html">Bota</a>
+                <li><a href="bota.html">Category</a>
                 </li>
-                <li><a href="politike.html">Politike</a>
+                <li><a href="politike.html">Category</a>
                 </li>
-                <li><a href="aktualitet.html">Aktualitet</a>
+                <li><a href="aktualitet.html">Category</a>
                 </li>
-                <li><a href="teknologji.html">Teknologji</a>
+                <li><a href="teknologji.html">Category</a>
                 </li>
-                <li><a href="sport.html">Sport</a>
+                <li><a href="sport.html">Category</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -59,7 +59,7 @@
                     <header class="td-post-title">
                         <h1 class="entry-title">{{$article->title}}</h1>
                         <div class="td-module-meta-info">
-                            <div class="td-post-author-name">By <a itemprop="author" href="">John Doe</a> - </div>
+                            <div class="td-post-author-name">By <a itemprop="author" href="">{{$article->getAdmin()}}</a> - </div>
                             <div class="td-post-date">
                                 <time itemprop="dateCreated" class="entry-date updated td-module-date" datetime="{{ date('F d, Y',strtotime($article->created_at)) }}">{{ date('F d, Y',strtotime($article->created_at)) }}</time>
                                 <meta itemprop="interactionCount" content="UserComments:0">
