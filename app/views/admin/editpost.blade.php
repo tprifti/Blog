@@ -10,15 +10,31 @@
 @section('content')
     <div class="col-md-12">
         <div class="row">
+    
+
             {{ Form::model($articles,['method' => 'PUT', 'files' =>'true','route' => ['article.update',$articles->slug]]) }}
 
 
+    <img class="img-responsive img-thumbnail" src="{{'/'.$articles->getImage()}}" width="300" height="169"> 
+             
+             <input type="hidden" name="thumbPath" value= "{{$articles->getImage()}}">
+             <input type="hidden" name="thumbId" value= "{{$articles->getImageId()}}">
+        
+        {{Form::file('image')}}
+    
             <input type="text" name="title" class="form-control"  value= "{{$articles->title}}">
+            
 
+             
 
             <textarea name="body">{{$articles->body}}</textarea>
+        
             {{Form::submit('Save Changes')}}
+            
             {{Form::close()}}
+
+           
+
         </div>
     </div>
 @stop

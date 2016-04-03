@@ -526,7 +526,7 @@ h3 {
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     border-radius: 20px;
-    background: #869791;
+    background: #8996a0;
 }
 .owl-theme .owl-controls .owl-page.active span {
     filter: Alpha(Opacity=100);
@@ -1125,9 +1125,9 @@ h4 {
     background-color: #222222;
     color: #fff;
 }
-.block-title > span {
+/*.block-title > span {
     background-color: #FE5722;
-}
+}*/
 .block-title {
     border-color: #FE5722;
     font-size:16px;
@@ -1136,6 +1136,43 @@ h4 {
 
 .td_block_2 .td_module_2 {
     padding-bottom: 21px;
+}
+
+.slider {
+    border-color: #ff3322;
+}
+
+.slider > span {
+    background-color: #ff3322;
+}
+.lifestyle {
+  border-color: #e20074;
+}
+.lifestyle > span {
+    background-color: #e20074; 
+}
+
+.health {
+    border-color: #34ad00;
+}
+
+.health > span {
+    background-color: #34ad00;
+}
+
+.entertainment {
+    border-color: #00aeef;
+}
+
+.entertainment > span {
+    background-color: #00aeef;
+}
+
+.latest {
+    border-color: #204056;
+}
+.latest > span {
+    background-color: #204056;
 }
 
 @media (max-width: 1018px) {

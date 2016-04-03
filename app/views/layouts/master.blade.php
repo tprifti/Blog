@@ -271,7 +271,7 @@
                                     <a href="#" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="{{url('admin/logout')}}" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="{{route('admin.logout')}}" class="btn btn-default btn-flat">Sign out</a>
                                 </div>
                             </li>
                         </ul>
@@ -312,7 +312,7 @@
             <ul class="sidebar-menu">
                 <li class="header">MAIN NAVIGATION</li>
                 <li >
-                    <a href="{{url('admin/dashboard')}}">
+                    <a href="{{route('admin.home')}}">
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                     </a>
                 </li>
@@ -331,7 +331,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="{{url('admin/article/new')}}">
+                    <a href="{{route('article.new')}}">
                         <i class="fa fa-th"></i> <span>New Post</span> <small class="label pull-right bg-green">new</small>
                     </a>
                 </li>
@@ -380,7 +380,7 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li class="active"><a href="{{url('articles/all')}}"><i class="fa fa-circle-o"></i>All Posts</a></li>
+                        <li class="active"><a href="{{route('article.all')}}"><i class="fa fa-circle-o"></i>All Posts</a></li>
                         <li><a href="data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
                     </ul>
                 </li>

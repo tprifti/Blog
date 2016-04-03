@@ -44,8 +44,13 @@ class Article extends Eloquent implements UserInterface, RemindableInterface, Sl
 	}
 
 	public function getImage(){
-		return $this->hasOne('Photo')->first()->image;
+		return $this->hasOne('Photo', 'article_id', 'id')->first()->image;
 	}
+
+	public function getImageId(){
+		return $this->hasOne('Photo')->first()->id;
+	}
+
 
 	public function getAdmin()
 	{

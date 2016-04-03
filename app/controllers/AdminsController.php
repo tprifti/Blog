@@ -8,10 +8,6 @@
 
 class AdminsController extends \BaseController{
 
-    public function ListAllArticles(){
-        $articles = Article::orderBy('created_at','DESC')->paginate(10);
-        return View::make('article.viewall')->with('articles',$articles);
-    }
 
     public function AddCategory()
     {

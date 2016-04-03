@@ -12,7 +12,7 @@ class ArticlesController extends \BaseController
 	 */
 	public function index()
 	{
-		return View::make('home');
+		return View::make('article.viewall');
 	}
 
 	/**
@@ -23,7 +23,9 @@ class ArticlesController extends \BaseController
 	 */
 	public function create()
 	{
-		//
+		 $category = Category::lists('category', 'id');
+
+    	return View::make('article.newpost')->with('category',$category);
 	}
 
 	/**
@@ -92,20 +94,47 @@ class ArticlesController extends \BaseController
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /articles/{id}
+	 * PUT /articles/{slug}
 	 *
-	 * @param  int $id
+	 * @param  int $slug
 	 * @return Response
 	 */
 	public function update($slug)
 	{
+
+		$thumbPath = Input::get('thumbPath');
+		$thumbId = Input::get('thumbId');
+		$image = Input::file('image');
+
 		$article = Article::where('slug', $slug)->first();
 		$article->title = Input::get('title');
 		$article->body = Input::get('body');
 		$article->save();
 
 
-		return View::make('admin.home')->withMessage('Article Saved!');
+		if($image){
+			 File::delete($thumbPath);
+			$file = Photo::where('id', $thumbId)->delete();
+
+			$thumb = new Photo;
+		$image = Input::file('image');
+		$filename = time() . '-' . $image->getClientOriginalName();
+		$destinationPath = public_path('thumbs/' . $filename);
+		$a = Image::make($image->getRealPath())->fit(1280,720)->save($destinationPath,50);
+		// SAVE TO DB
+		$thumb->image = 'thumbs/' . $filename;
+		$thumb->article_id = $article->id;
+		$thumb->save();
+		return Redirect::to('/dashboard')->with('message', 'Thumbnail updated successfully');
+
+		} else {
+			return Redirect::to('/dashboard')->with('message','Article Updated successfully');
+		}
+		
+
+		
+
+		// return View::make('admin.home')->withMessage('Article Saved!');
 	}
 
 	public function uploadsource()

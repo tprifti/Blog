@@ -24,22 +24,14 @@ Route::get('admin/login', 'AuthController@getAdminLogin');
 Route::post('admin/login', 'AuthController@postAdminLogin');
 
 Route::any('admin/logout', 'AuthController@AdminLogout');
-Route::get('/admin/dashboard', 'AuthController@index');
 
-Route::get('admin/article/new', function(){
 
-    $category = Category::lists('category', 'id');
-    return View::make('admin.newpost')->with('category',$category);
-});
 
-Route::get('article/{slug}/edit', 'ArticlesController@edit');
-Route::resource('article', 'ArticlesController',['except' => ['destroy']]);
-Route::post('/article/{slug}/delete',array('uses'=>'ArticlesController@removeArticle', 'as' => 'remove.article'));
-Route::post('/uploadimg','ArticlesController@uploadsource'); 
 
-Route::get('test', function(){
+Route::post('test', function(){
 
-    return View::make('test');
+$image = Input::file('image');
+return $image;
 });
 
 
@@ -53,24 +45,24 @@ Route::get('api/articles', function(){
     return $articles;
 
 });
+Route::resource('article', 'ArticlesController',['except' => ['destroy']]);	
+
+Route::group(['prefix' => '/dashboard', 'before' => 'auth.admin'], function () {
 
 
-//Route::get('getdata', function(){
-//
-//    $term = Str::lower(Input::get('term'));
-//
-//    $data = Article::where('title', 'LIKE', '%'.$term.'%')->groupBy('title')->get();
-//
-//    foreach ($data as $v) {
-//    	$return_array[] = array('value' => $v->title);
-//    }
-//
-//    return Response::json($return_array);
-//});
+	Route::post('category/add',array('uses' => 'AdminsController@AddCategory', 'as' => 'add.category'));
+	//Article Routes
+    Route::get('/article/all',array('uses' => 'ArticlesController@index', 'as' => 'article.all'));
+	Route::get('/article/new',array('uses' => 'ArticlesController@create', 'as' => 'article.new'));
+	Route::get('article/{slug}/edit', 'ArticlesController@edit');
+	Route::post('/articles/{id}/delete',array('uses'=>'ArticlesController@removeArticle', 'as' => 'remove.article'));
+	Route::post('/uploadimg','ArticlesController@uploadsource');
+	//Auth routes
+	Route::get('/',array('uses' => 'AuthController@index', 'as' => 'admin.home'));
+	Route::any('/logout',array('uses' => 'AuthController@AdminLogout','as' => 'admin.logout'));
+	Route::get('/admin/dashboard', 'AuthController@index');
+});
 
-Route::get('/articles/all','AdminsController@ListAllArticles');
-
-Route::post('category/add',array('uses' => 'AdminsController@AddCategory', 'as' => 'add.category'));
 
 
 
