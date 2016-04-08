@@ -41,25 +41,36 @@
             <ul class="nav navbar-nav navbar-left">
                 <li><a href="index.html">Home</a>
                 </li>
-                <li><a href="">########</a>
+                <li><a href="">####</a>
                 </li>
-                <li><a href="">########</a>
+                <li><a href="">####</a>
                 </li>
-                <li><a href="">########</a>
+                <li><a href="">######</a>
                 </li>
-                <li><a href="">########</a>
+                <li><a href="">###</a>
                 </li>
-                <li><a href="">#######</a>
-                </li>
-               
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-heart-o fa-lg"></i></a>
-                </li>
-            </ul>
+            </ul>            
         </div>
     </div>
 </nav>
+<header class="main_h">
+    <div class="row">
+        <a class="logo" href="#">BR</a>
+        <div class="mobile-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href=".sec01">Section 01</a></li>
+                <li><a href=".sec02">Section 02</a></li>
+                <li><a href=".sec03">Section 03</a></li>
+                <li><a href=".sec04">Section 04</a></li>
+            </ul>
+        </nav>
+    </div> <!-- / row -->
+</header>
 <!-- here ends navbar-->
 
 <div class="container">
@@ -111,7 +122,7 @@
             <span>
                 <div class="td_block_wrap td_block_2  td-pb-border-top">
                     <h4 class="block-title lifestyle"><span>LIFESTYLE</span></h4>
-   </span>
+            </span>
                     <div class="td_block_inner">
                         @foreach($related->chunk(2) as $test)
                         <div class="td-block-row">
@@ -472,7 +483,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+{{HTML::script('assets/user/js/script.js')}}
 <script>
+
     $(document).ready(function() {
         $("#owl-example").owlCarousel({
             items: 1,
