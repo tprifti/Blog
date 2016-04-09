@@ -26,16 +26,6 @@ Route::post('admin/login', 'AuthController@postAdminLogin');
 Route::any('admin/logout', 'AuthController@AdminLogout');
 
 
-
-
-Route::post('test', function(){
-
-$image = Input::file('image');
-return $image;
-});
-
-
-
 // ADMIN DASHBOARD ROUTES
 
 Route::get('api/articles', function(){
@@ -45,23 +35,23 @@ Route::get('api/articles', function(){
     return $articles;
 
 });
+
 Route::resource('article', 'ArticlesController',['except' => ['destroy']]);	
 
 Route::group(['prefix' => '/dashboard', 'before' => 'auth.admin'], function () {
-
 
 	Route::post('category/add',array('uses' => 'AdminsController@AddCategory', 'as' => 'add.category'));
 	//Article Routes
     Route::get('/article/all',array('uses' => 'ArticlesController@index', 'as' => 'article.all'));
 	Route::get('/article/new',array('uses' => 'ArticlesController@create', 'as' => 'article.new'));
-	Route::get('article/{slug}/edit', 'ArticlesController@edit');
+	Route::get('/article/{slug}/edit', 'ArticlesController@edit');
 	Route::post('/articles/{id}/delete',array('uses'=>'ArticlesController@removeArticle', 'as' => 'remove.article'));
 	Route::post('/uploadimg','ArticlesController@uploadsource');
 	//Auth routes
 	Route::get('/',array('uses' => 'AuthController@index', 'as' => 'admin.home'));
 	Route::any('/logout',array('uses' => 'AuthController@AdminLogout','as' => 'admin.logout'));
-	Route::get('/admin/dashboard', 'AuthController@index');
 });
+
 
 
 
