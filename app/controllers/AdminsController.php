@@ -18,7 +18,7 @@ class AdminsController extends \BaseController{
 
         $category->category = $cat;
         $category->save();
-        return Redirect::intended('/admin/article/new');
+        return Redirect::route('article.new');
     }
 
 }

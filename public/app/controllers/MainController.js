@@ -35,8 +35,7 @@ app.controller('MainController', ['$scope', 'filterFilter', '$http', function($s
     
     $scope.deleteArticle = function(response) {
      $scope.article = response;
-    
-
     }
-        
+    
+   
 }]);

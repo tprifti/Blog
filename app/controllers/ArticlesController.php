@@ -12,7 +12,8 @@ class ArticlesController extends \BaseController
 	 */
 	public function index()
 	{
-		return View::make('article.viewall');
+		$article = Article::all();
+		return View::make('article.viewall')->with('article',$article);
 	}
 
 	/**
@@ -163,11 +164,10 @@ class ArticlesController extends \BaseController
 
 	public function removeArticle($id)
 	{
-		$item = Article::find(id);
-		if (!is_null($item)) {
+		$item = Article::where('id',$id)->first();
 			$item->delete();
-		}
-		return "Item deleted";
+
+			return Redirect::route('admin.home')->with('message', "Item deleted successfully");
 
 	}
 }

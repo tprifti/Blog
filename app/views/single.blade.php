@@ -1,7 +1,8 @@
 <html lang="en" hola_ext_inject="disabled">
 <head>
     <meta charset="UTF-8">
-    <title>Single Post</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>{{$article->title}}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
@@ -71,7 +72,7 @@
                 </div>
                 <div class="td-post-sharing td-post-sharing-top ">
                     <div class="td-default-sharing">
-                        <a class="td-social-sharing-buttons td-social-facebook" href="">
+                        <a class="td-social-sharing-buttons td-social-facebook" href="{{url('http://www.facebook.com/sharer.php?u=')}}{{route('article.show',$article->slug)}}">
                             <i class="td-icon-facebook"></i>
                             <div class="td-social-but-text">Share on Facebook</div>
                         </a>
@@ -94,9 +95,7 @@
 
                         <p>{{$article->body}}</p>
                     </div>
-                    
-
-                    
+   
                   <!--   <blockquote>
                         <div class="td-paragraph-padding-2">
                             <p>Be the change that you wish to see in the world</p>
@@ -158,11 +157,13 @@
                                 </div>
                             </div>
                         </div>
-                        <meta itemprop="author" content="John Doe">
-                        <meta itemprop="datePublished" content="2015-04-24T05:44:22+00:00">
-                        <meta itemprop="headline " content="Amazon's Apple Watch killer will be free and sell you everything">
-                        <meta itemprop="image" content="http://demo.tagdiv.com/newspaper/wp-content/uploads/2015/04/26.jpg">
-                        <meta itemprop="interactionCount" content="UserComments:0">
+
+                    <meta property="og:url"                content="{{route('article.show',$article->slug)}}" />
+                    <meta property="og:type"               content="article" />
+                    <meta property="og:title"              content="{{$article->title}}" />
+                    <meta property="og:description"        content="{{$article->body}}" />
+                    <meta property="og:image"          content="{{url($article->getImage())}}" />
+
                     </footer>
             </article>
             <nav>

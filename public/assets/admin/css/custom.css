@@ -11,7 +11,7 @@
 
 }
 
-.right {
+.align-r {
     text-align: right;
 }
 
@@ -31,4 +31,23 @@
     border-radius: 6px;
     webkit-box-shadow: 0 5px 15px rgba(0,0,0,.5);
     box-shadow: 0 5px 15px rgba(0,0,0,.5);
+}
+
+.cat_form {
+    
+    background-color: #f1f1f1;
+    padding: 1em 16px;
+}
+
+.col-md-3 #cat-select  {
+    border-radius: 5px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
+}
+
+.dropzone {
+    border : 0!important;
+    min-height: 0!important;
+}
+.box-info .btn-group button {
+    margin :5px;
 }

@@ -48,7 +48,7 @@
                                 <td>
                                     <span class="btn-group">
                                         <a href="/article/[[article.slug]]" class="btn btn-success">Preview</a>
-                                        <a href="/article/[[article.slug]]/edit" class="btn btn-warning" style="margin: 0 10px 0 10px;">Edit</a>
+                                        <a href="/dashboard/article/[[article.slug]]/edit" class="btn btn-warning" style="margin: 0 10px 0 10px;">Edit</a>
                                         <a href="#" class="btn btn-danger" ng-click="deleteArticle(article)" data-toggle="modal" data-target=".bs-example-modal-lg">Delete</a>
                                     </span>
                                 </td>
@@ -62,7 +62,7 @@
                 </div>{{-- /.box-body --}}
                 
             </div>{{-- /.box --}}
-            <form method="POST" action="[['/articles/'+article.id+'/delete']]"></form>
+            <form method="post" action="[['/dashboard/article/'+article.id+'/delete']]">
                 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
                    <div class="modal-dialog modal-lg">
                       <div class="modal-content">
@@ -76,8 +76,8 @@
                          </div>
                       </div>
                    </div>
-                </div>
-                </form>    
+                </div> 
+            </form> 
         </div>
     </div>
 @stop

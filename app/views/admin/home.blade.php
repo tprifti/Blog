@@ -11,12 +11,11 @@
         
           <div class="row">
           @if(Session::has('message'))
-          <div class="col-md-8" >
-            <div class="alert alert-success" id="success-alert">
-              <button type="button" class="close" data-dismiss="alert">x</button>
-              <strong>{{Session::get('message')}}</strong>
+          <div class="col-md-9">
+              <div class="alert alert-success alert-autocloseable-success">
+                {{Session::get('message')}}
+              </div>     
             </div>
-          </div>
           @endif
             <div class="col-md-6">
 
@@ -65,12 +64,5 @@
 
 @section('scripts')
     {{HTML::script('assets/admin/js/chart.min.js')}}
-
-    <script type="text/javascript">
-    $(document).ready(function(){
-      setTimeout(function()
-        { $('#success-alert').fadeOut() 
-      }, 2000);
-    });
-      </script>
+    {{HTML::script('assets/admin/js/custom.js')}}
 @stop

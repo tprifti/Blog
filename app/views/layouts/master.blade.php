@@ -380,7 +380,7 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li class="active"><a href="{{route('article.all')}}"><i class="fa fa-circle-o"></i>All Posts</a></li>
+                        <li class="active"><a href="{{route('article.index')}}"><i class="fa fa-circle-o"></i>All Posts</a></li>
                         <li><a href="data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
                     </ul>
                 </li>
@@ -448,16 +448,6 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1>
-                A custom title
-            </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="#">Tables</a></li>
-                <li class="active">Simple</li>
-            </ol>
-        </section>
 
         <!-- Main content -->
         <section class="content">
@@ -654,6 +644,7 @@
 {{HTML::script('assets/dist/js/app.min.js')}}
         <!-- AdminLTE for demo purposes -->
 {{HTML::script('assets/dist/js/demo.js')}}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.js"></script>   
 
 @yield('scripts')
 

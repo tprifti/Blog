@@ -89,10 +89,10 @@ class AuthController extends \BaseController {
 			if(Auth::admin()->attempt($credentials,true)){
 				return Redirect::to('/dashboard');
 			} else {
-				return Redirect::to('/login')->withErrors('Username or password invalid');
+				return Redirect::to('/admin/login')->withErrors('Username or password invalid');
 			}
 		} else  {
-			return Redirect::to('/login')->withErrors($validator->messages());
+			return Redirect::to('/admin/login')->withErrors($validator->messages());
 
 		}
 	}

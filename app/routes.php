@@ -25,9 +25,6 @@ Route::post('admin/login', 'AuthController@postAdminLogin');
 
 Route::any('admin/logout', 'AuthController@AdminLogout');
 
-
-// ADMIN DASHBOARD ROUTES
-
 Route::get('api/articles', function(){
 
     $articles = Article::orderBy('created_at','DESC')->get();
@@ -36,20 +33,32 @@ Route::get('api/articles', function(){
 
 });
 
-Route::resource('article', 'ArticlesController',['except' => ['destroy']]);	
+Route::get('/article/{slug}',array('uses' => 'ArticlesController@show','as'=>'article.show'));
 
 Route::group(['prefix' => '/dashboard', 'before' => 'auth.admin'], function () {
 
-	Route::post('category/add',array('uses' => 'AdminsController@AddCategory', 'as' => 'add.category'));
+	Route::post('/category/add',array('uses' => 'AdminsController@AddCategory', 'as' => 'add.category'));
 	//Article Routes
-    Route::get('/article/all',array('uses' => 'ArticlesController@index', 'as' => 'article.all'));
+	Route::get('/article/all',array('uses' => 'ArticlesController@index','as' => 'article.index'));
+	Route::get('/article/create',array('uses' => 'ArticlesController@create','as' => 'article.create'));
+	Route::post('/article',array('uses' => 'ArticlesController@store','as' => 'article.store'));
+	Route::get('/article/{slug}/edit',array('uses' => 'ArticlesController@edit','as' => 'article.edit'));
+	Route::put('/article/{slug}',array('uses' => 'ArticlesController@update','as' => 'article.update'));
 	Route::get('/article/new',array('uses' => 'ArticlesController@create', 'as' => 'article.new'));
-	Route::get('/article/{slug}/edit', 'ArticlesController@edit');
-	Route::post('/articles/{id}/delete',array('uses'=>'ArticlesController@removeArticle', 'as' => 'remove.article'));
+	Route::post('/article/{id}/delete',array('uses'=>'ArticlesController@removeArticle', 'as' => 'remove.article'));
 	Route::post('/uploadimg','ArticlesController@uploadsource');
 	//Auth routes
 	Route::get('/',array('uses' => 'AuthController@index', 'as' => 'admin.home'));
 	Route::any('/logout',array('uses' => 'AuthController@AdminLogout','as' => 'admin.logout'));
+});
+
+Route::get('/hello',function(){
+	return View::make('hello');
+});
+
+Route::post('/test',function(){
+	$a = Input::get('category');
+	return $a;
 });
 
 

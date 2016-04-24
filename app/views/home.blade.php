@@ -39,15 +39,15 @@
         </div>
         <div class="navbar-collapse collapse" id="navbar-collapsible">
             <ul class="nav navbar-nav navbar-left">
-                <li><a href="index.html">Home</a>
+                <li><a href="{{url('/')}}">Home</a>
                 </li>
-                <li><a href="">####</a>
+                <li><a href="#lifestyle">Lifestyle</a>
                 </li>
-                <li><a href="">####</a>
+                <li><a href="#health">Health</a>
                 </li>
-                <li><a href="">######</a>
+                <li><a href="#entertainment">Entertainment</a>
                 </li>
-                <li><a href="">###</a>
+                <li><a href="#latest">Latest Posts</a>
                 </li>
             </ul>            
         </div>
@@ -63,10 +63,10 @@
         </div>
         <nav>
             <ul>
-                <li><a href=".sec01">Section 01</a></li>
-                <li><a href=".sec02">Section 02</a></li>
-                <li><a href=".sec03">Section 03</a></li>
-                <li><a href=".sec04">Section 04</a></li>
+                <li><a href="#lifestyle">Lifestyle</a></li>
+                <li><a href="#health">Health</a></li>
+                <li><a href="#entertainment">Entertainment</a></li>
+                <li><a href="#latest">Latest Posts</a></li>
             </ul>
         </nav>
     </div> <!-- / row -->
@@ -120,12 +120,12 @@
             <!-- HERE STARTS SOME SHIT-->
             <div class="row">
             <span>
-                <div class="td_block_wrap td_block_2  td-pb-border-top">
+                <div id="lifestyle" class="tbw tb2 tpbt">
                     <h4 class="block-title lifestyle"><span>LIFESTYLE</span></h4>
             </span>
-                    <div class="td_block_inner">
+                    <div class="block-in-td">
                         @foreach($related->chunk(2) as $test)
-                        <div class="td-block-row">
+                        <div class="td-block">
                             @foreach($test as $android)
                             <div class="td-block-span6">
                                 <div class="td_module_2 td_module_wrap " itemscope="" itemtype="http://schema.org/Article">
@@ -153,7 +153,7 @@
                         @endforeach
 
                         @foreach($small->chunk(2) as $haha)
-                        <div class="td-block-row">
+                        <div class="td-block">
                             @foreach($haha as $rihanna)
                             <div class="td-block-span6">
                                 <div class="td_module_6 td_module_wrap " itemscope="#" itemtype="http://schema.org/Article">
@@ -183,10 +183,10 @@
             <!-- HERE GOES Health SECTION-->
             <div class="row">
 
-                <div class="td_block_wrap td_block_1 td-pb-border-top">
+                <div id="health" class="tbw td_block_1 tpbt">
                     <h4 class="block-title health"><span style="margin-right: 0px;">HEALTH</span></h4>
-                    <div class="td_block_inner">
-                        <div class="td-block-row">
+                    <div class="block-in-td">
+                        <div class="td-block">
                             <div class="td-block-span6">
                                 @foreach($gethealthArticle as $headArticle)
                                 <div class="td_module_4 td_module_wrap " itemscope="" itemtype="http://schema.org/Article">
@@ -237,10 +237,10 @@
             </div>
 
             <div class="row">
-                <div class="td_block_wrap td-pb-border-top">
+                <div id="entertainment" class="tbw tpbt">
                     <h4 class="block-title entertainment"><span style="margin-right: 0px;">ENTERTAINMENT</span></h4>
-                    <div  class="td_block_inner">
-                        <div class="td-block-row">
+                    <div  class="block-in-td">
+                        <div class="td-block">
                             <div class="td-block-span6">
                                 @foreach($entertainmentHeader as $enterheader)
                                 <div class="td_module_4 td_module_wrap " itemscope="" itemtype="http://schema.org/Article">
@@ -292,12 +292,12 @@
 
             <!--HERE IS RECENT POSTS SECTION-->
             <div class="row">
-                <div class="td-pb-span8 td-main-content" role="main">
+                <div id="latest" class="td-pb-span8 td-main-content" role="main">
                     <div class="td-ss-main-content">
                         <div class="clearfix"></div>
                         <h4 class="block-title latest"><span>LATEST POSTS</span></h4>
                         @foreach($latestArticles->chunk(2) as $latestArticle)
-                        <div class="td-block-row">
+                        <div class="td-block">
                             @foreach($latestArticle as $test)
                             <div class="td-block-span6">
                                 <div class="td_module_1 td_module_wrap " itemscope="" itemtype="http://schema.org/Article">
