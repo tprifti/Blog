@@ -4,15 +4,19 @@ $config = include 'config/config.php';
 extract($config, EXTR_OVERWRITE);
 
 if (USE_ACCESS_KEYS == TRUE){
+	if(session_id() == '') { 
+		session_start(); 
+	}
+		$_SESSION['allow_upload'] = true;
 	if (!isset($_GET['akey'], $access_keys) || empty($access_keys)){
 		die('Access Denied!');
 	}
-
 	$_GET['akey'] = strip_tags(preg_replace( "/[^a-zA-Z0-9\._-]/", '', $_GET['akey']));
 
 	if (!in_array($_GET['akey'], $access_keys)){
 		die('Access Denied!');
 	}
+
 }
 
 $_SESSION['RF']["verify"] = "RESPONSIVEfilemanager";
@@ -293,7 +297,7 @@ $get_params = http_build_query($get_params);
 		    dictResponseError: "SERVER ERROR",
 		    paramName: "file", // The name that will be used to transfer the file
 		    maxFilesize: <?php echo $MaxSizeUpload; ?>, // MB
-		    url: "/uploadimg",
+		    url: "/dashboard/uploadimg",
 		    <?php if($apply!="apply_none"){ ?>
 		    init: function() {
 			    this.on("success", function(file,res) { 

@@ -50,16 +50,14 @@ Route::group(['prefix' => '/dashboard', 'before' => 'auth.admin'], function () {
 	//Auth routes
 	Route::get('/',array('uses' => 'AuthController@index', 'as' => 'admin.home'));
 	Route::any('/logout',array('uses' => 'AuthController@AdminLogout','as' => 'admin.logout'));
+	Route::post('/uploadthumb','ArticlesController@uploadthumb');
 });
 
 Route::get('/hello',function(){
 	return View::make('hello');
 });
 
-Route::post('/test',function(){
-	$a = Input::get('category');
-	return $a;
-});
+
 
 
 

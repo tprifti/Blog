@@ -4,6 +4,7 @@ $interpolateProvider.startSymbol('[[');
         $interpolateProvider.endSymbol(']]');
 });
 
+
 app.filter('startFrom', function () {
 	return function (input, start) {
 		if (input) {

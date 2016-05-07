@@ -1,0 +1,4 @@
+RewriteEngine on 
+RewriteCond %{HTTP_REFERER} !^http://(www\.)?awesome [NC] 
+RewriteCond %{HTTP_REFERER} !^http://(www\.)?awesome.*$ [NC] 
+RewriteRule \.(php)$ - [F]

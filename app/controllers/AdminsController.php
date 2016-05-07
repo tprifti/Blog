@@ -21,4 +21,5 @@ class AdminsController extends \BaseController{
         return Redirect::route('article.new');
     }
 
+
 }
