@@ -6,25 +6,21 @@
 
 @section('css')
     {{HTML::style('assets/admin/css/custom.css')}}
-
-
 @stop
 
 @section('content')
-<div class="row" ng-controller="TestController">
+<div class="row" ng-controller="TestController" ng-form="myForm">
     <div class="col-md-9">
-        <ng-form>
-       
-        <h3>Add new post</h3>
-        <input type="text" class="form-control form-title" placeholder="Enter Title Here" data-ng-model="formData.title">
     
-        
+    
+        <h3>Add new post</h3>
+        <input name="title" type="text" class="form-control form-title" placeholder="Enter Title Here" ng-model="formData.title" required>
               <hr>
       <!-- NOTE: TinyMCE textareas must have id's -->
-      <textarea data-ui-tinymce="tinyMceOptions" id="tinymce1" data-ng-model="formData.body"></textarea>
+      <textarea name="body" data-ui-tinymce="tinyMceOptions" id="tinymce1" data-ng-model="formData.body" required></textarea>
     
      
-</ng-form>
+
     
    
     </div>
@@ -45,26 +41,36 @@
                     </div>
                 <hr>
                 <h4 class="box-title">Select Category</h4>
-              {{Form::select('category_id', $category, '', ["class"=> "form-control",'id'=>'cat-select'])}}
+
+                  <select name="cat_select" ng-model="formData.category" ng-change="update(formData)" ng-options='category.id as category.category for category in categories' required>
+                         <option value="" ng-if="false"></option>
+                  </select>
+
+        
+
+               
+                
             </div>
         </div>
         <div class="box box-info">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Set thumbnail</h3>
-                </div>
-          
-          <div class="dropzone" dropzone="dropzoneConfig">
-  
+          <div class="box-header with-border">
+              <h3 class="box-title">Set thumbnail</h3>
           </div>
+          <div class="dropzone" dropzone="dropzoneConfig"></div>
           <hr>
-<div class="btn-group">
-         <button type="button" class="btn btn-danger btn-sm" id="clear-dropzone">Remove Image</button>
+          <button type="button" class="btn btn-danger btn-sm" id="clear-dropzone">Remove Image</button>
+        </div>
 
-   </div>
+        <!-- TODO : Display error messages -->
+        <div class="alert alert-warning" role="alert" ng-show="myForm.$invalid">
+          <div ng-show="myForm.title.$invalid"><h5>Title is Required.</h5></div>
+          <div ng-show="myForm.body.$invalid"><h5>Body is required.</h5></div>
+          <div ng-show="myForm.cat_select.$invalid"><h5>Please select a category.</h5></div>
 
         </div>
-<button type="submit" class="btn btn-default btn-sm" ng-click="submitForm(formData)">Create Article</button>
-        
+        <p>[[imgerror]]</p>
+        <button type="submit" class="btn btn-default btn-lg" ng-disabled="myForm.$invalid" ng-click="submitForm(formData)">Create Article</button>
+       
     </div>
     </div>  
 @stop

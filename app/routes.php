@@ -32,6 +32,10 @@ Route::get('api/articles', function(){
     return $articles;
 
 });
+Route::get('api/categories',function(){
+	$categories = Category::all();
+	return $categories;
+});
 
 Route::get('/article/{slug}',array('uses' => 'ArticlesController@show','as'=>'article.show'));
 

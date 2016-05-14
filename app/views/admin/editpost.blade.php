@@ -21,6 +21,7 @@
              <input type="hidden" name="thumbId" value= "{{$articles->getImageId()}}">
         
         {{Form::file('image')}}
+
     
             <input type="text" name="title" class="form-control"  value= "{{$articles->title}}">
             
@@ -28,6 +29,9 @@
              
 
             <textarea name="body">{{$articles->body}}</textarea>
+
+           <h4 class="box-title">Select Category</h4>
+              {{Form::select('category_id', $category, $selected, ["class"=> "form-control",'id'=>'cat-select'])}}
         
             {{Form::submit('Save Changes')}}
             

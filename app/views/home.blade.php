@@ -145,7 +145,6 @@
                                             {{date('F d, Y',strtotime($android->created_at))}}
                                         </div>
                                     </div>
-                                        <div class="td-excerpt">{{str_replace(array("\r", "\n"), ' ', strip_tags(trim(substr($android->body,0,100).'...')))}}</div>
                                 </div>
                             </div>
                             @endforeach
@@ -202,9 +201,7 @@
                                             {{date('F d, Y',strtotime($headArticle->created_at))}}
                                         </div>
                                     </div>
-                                    <div class="td-excerpt">
-                                        {{substr($headArticle->body,0,150)}} 
-                                    </div>
+                                    
                                 </div>
                                 @endforeach
                             </div>
@@ -257,9 +254,7 @@
                                             {{date('F d, Y',strtotime($enterheader->created_at))}}
                                         </div>
                                     </div>
-                                    <div class="td-excerpt">
-                                        {{substr($headArticle->body,0,250)}} 
-                                    </div>
+                                    
                                 </div>
                                 @endforeach
                             </div>

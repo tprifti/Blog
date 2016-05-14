@@ -48,7 +48,7 @@ class ArticlesController extends \BaseController
 		$article->admin_id = Auth::admin()->get()->id;
 		$article->title = Input::get('title');
 		$article->body = Input::get('body');
-		$article->category_id = 1; // Should fix this
+		$article->category_id = Input::get('category_id');
 		$article->save();
 
 		$thumb = new Photo;
@@ -63,7 +63,7 @@ class ArticlesController extends \BaseController
 		$thumb->save();
 
 		}else{
-			Response::json(['error' => 'Image is Required'], 400);
+			Response::json(['error' => 'Image is Requireddddddd'], 400);
 		}
 
 	
@@ -93,7 +93,12 @@ class ArticlesController extends \BaseController
 	public function edit($slug)
 	{
 		$articles = Article::where('slug', $slug)->first();
-		return View::make('admin.editpost')->with('articles', $articles, $slug);
+		$category = Category::lists('category', 'id');
+		$selected = Category::where('id',$articles->category_id)->first()->id;
+		
+		 return View::make('admin.editpost')->with('articles', $articles)
+		 								   ->with('category',$category)
+		 								   ->with('selected',$selected);
 	}
 
 	/**
@@ -113,6 +118,7 @@ class ArticlesController extends \BaseController
 		$article = Article::where('slug', $slug)->first();
 		$article->title = Input::get('title');
 		$article->body = Input::get('body');
+		$article->category_id = Input::get('category_id');
 		$article->save();
 
 

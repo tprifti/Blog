@@ -93,7 +93,7 @@
                     </div>
                     <div class="td-paragraph-padding-1">
 
-                        <p>{{$article->body}}</p>
+                        {{$article->body}}
                     </div>
    
                   <!--   <blockquote>
@@ -158,11 +158,10 @@
                             </div>
                         </div>
 
-                    <meta property="og:url"                content="{{route('article.show',$article->slug)}}" />
-                    <meta property="og:type"               content="article" />
-                    <meta property="og:title"              content="{{$article->title}}" />
-                    <meta property="og:description"        content="{{$article->body}}" />
-                    <meta property="og:image"          content="{{url($article->getImage())}}" />
+                    <meta property="og:url"             content="{{route('article.show',$article->slug)}}" />
+                    <meta property="og:type"            content="article" />
+                    <meta property="og:title"           content="{{$article->title}}" />
+                    <meta property="og:image"           content="{{url($article->getImage())}}" />
 
                     </footer>
             </article>
