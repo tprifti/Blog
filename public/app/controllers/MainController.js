@@ -3,6 +3,7 @@ app.controller('MainController', ['$scope', 'filterFilter', '$http', function($s
 
     var onArticles = function(response) {
         $scope.articles = response.data;
+        console.log(response);
         $scope.currentPage = 1;
         $scope.totalArticles = $scope.articles.length;
 

@@ -41,9 +41,17 @@ class ArticlesController extends \BaseController
 		$validator = Validator::make(Input::all(), $rules);
 		if ($validator->fails()) {
 			$messages = $validator->messages();
-			return $messages;
+			// return Response::json(['error' => $messages], 400);
+			
 		}
-		$admin = Auth::admin();
+		
+
+		$image = Input::file('file');
+		if(!$image){
+			return Response::json(['error' => $messages], 400);
+
+		}else{
+			$admin = Auth::admin();
 		$article = new Article;
 		$article->admin_id = Auth::admin()->get()->id;
 		$article->title = Input::get('title');
@@ -52,8 +60,7 @@ class ArticlesController extends \BaseController
 		$article->save();
 
 		$thumb = new Photo;
-		$image = Input::file('file');
-		if($image){
+		
 		$filename = time() . '-' . $image->getClientOriginalName();
 		$destinationPath = public_path('thumbs/' . $filename);
 		$a = Image::make($image->getRealPath())->fit(1280,720)->save($destinationPath,50);
@@ -61,9 +68,6 @@ class ArticlesController extends \BaseController
 		$thumb->image = 'thumbs/' . $filename;
 		$thumb->article_id = $article->id;
 		$thumb->save();
-
-		}else{
-			Response::json(['error' => 'Image is Requireddddddd'], 400);
 		}
 
 	

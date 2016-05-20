@@ -55,7 +55,7 @@
 </nav>
 <header class="main_h">
     <div class="row">
-        <a class="logo" href="#">BR</a>
+        <a class="logo" href="#">TS</a>
         <div class="mobile-toggle">
             <span></span>
             <span></span>
@@ -76,8 +76,9 @@
 <div class="container">
 
     <div class="blog-header">
-        <h1 class="blog-title">My blog name</h1>
-        <p class="lead blog-description">My blog moto(should find )</p>
+        <!-- <h1 class="blog-title">My blog name</h1> -->
+       <!--  <p class="lead blog-description">Blog p> -->
+       <img class="img-thumbnail" src="{{asset('assets/dist/img/thumb.jpg')}}"></img>
     </div>
 
     <div class="row">

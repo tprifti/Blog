@@ -33,9 +33,9 @@ class Article extends Eloquent implements UserInterface, RemindableInterface, Sl
 
 	public static $rules = [
 		'title' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/|max:90',
-		'image' => 'mimes:jpg,jpeg,bmp,png|max:4000',
-		'body' => 'required|',
-		'category_id' =>'required|'
+		'image' => 'required|mimes:jpg,jpeg,bmp,png|max:4000',
+		'body' => 'required',
+		'category_id' =>'required',
 
 	];
 

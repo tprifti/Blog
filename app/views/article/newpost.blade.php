@@ -42,14 +42,11 @@
                 <hr>
                 <h4 class="box-title">Select Category</h4>
 
-                  <select name="cat_select" ng-model="formData.category" ng-change="update(formData)" ng-options='category.id as category.category for category in categories' required>
+                  <select class="form-control" name="cat_select" ng-model="formData.category" ng-change="update(formData)" ng-options='category.id as category.category for category in categories' required>
                          <option value="" ng-if="false"></option>
                   </select>
-
-        
-
                
-                
+                    
             </div>
         </div>
         <div class="box box-info">
@@ -58,7 +55,7 @@
           </div>
           <div class="dropzone" dropzone="dropzoneConfig"></div>
           <hr>
-          <button type="button" class="btn btn-danger btn-sm" id="clear-dropzone">Remove Image</button>
+          <center><button type="button" class="btn btn-danger btn-sm" id="clear-dropzone">Remove Image</button></center>
         </div>
 
         <!-- TODO : Display error messages -->
@@ -66,9 +63,11 @@
           <div ng-show="myForm.title.$invalid"><h5>Title is Required.</h5></div>
           <div ng-show="myForm.body.$invalid"><h5>Body is required.</h5></div>
           <div ng-show="myForm.cat_select.$invalid"><h5>Please select a category.</h5></div>
-
         </div>
-        <p>[[imgerror]]</p>
+
+        <div class="alert alert-danger" role="alert" ng-if="error">
+        <h5>[[error]]</h5>
+        </div>
         <button type="submit" class="btn btn-default btn-lg" ng-disabled="myForm.$invalid" ng-click="submitForm(formData)">Create Article</button>
        
     </div>

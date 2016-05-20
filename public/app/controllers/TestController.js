@@ -1,12 +1,15 @@
 app.controller('TestController', function ($scope, $http,$sanitize,$window) {
     
- $scope.from_one = {
-      from_one :'<strong>bold data in controller in from_one.js</strong>'
-    }
+var onCategories = function(response) {
+  $scope.categories = response.data;
+
+}
+ $http.get("/api/categories")
+        .then(onCategories);
 
 $scope.tinyMceOptions = {
     selector: "textarea",theme: "modern",
-            height : "350",
+            height : "430",
             plugins: [
                 "advlist autolink link image lists charmap print preview hr anchor pagebreak",
                 "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
@@ -28,20 +31,23 @@ $scope.tinyMceOptions = {
 $scope.submitForm = function(formData){
   var data = new FormData();
   var file = $scope.thumbnail;
+
   data.append("file",$scope.thumbnail);
   data.append("title",formData.title);
-  data.append("body",formData.body); 
+  data.append("body",formData.body);
+  data.append("category_id", formData.category); 
 
   $http({
     method: 'POST',
     url: '/dashboard/article',
     data: data,
     headers: {'Content-Type': undefined }
-}).success(function () {
+    }).success(function () {
         $window.location.href="http://www.awesome.dev/dashboard";
-    });
+    }).error(function(error){
+      $scope.error = error.error.image[0];
+    });  
 }
-
 
 $scope.dropzoneConfig = {
     'options': { // passed into the Dropzone constructor
@@ -66,7 +72,7 @@ $scope.dropzoneConfig = {
           $scope.thumbnail = file;
       },
       'error' : function(file, response){
-        console.log(response.error.image[0]);
+        // console.log(response);
       }
     }
   };
