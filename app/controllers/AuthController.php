@@ -126,4 +126,6 @@ class AuthController extends \BaseController {
 		return Redirect::to('/admin/login');
 	}
 
+	
+
 }

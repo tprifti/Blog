@@ -100,10 +100,11 @@ class ArticlesController extends \BaseController
 		$category = Category::lists('category', 'id');
 		$selected = Category::where('id',$articles->category_id)->first()->id;
 		
-		 return View::make('admin.editpost')->with('articles', $articles)
+		 return View::make('article.editpost')->with('articles', $articles)
 		 								   ->with('category',$category)
 		 								   ->with('selected',$selected);
 	}
+
 
 	/**
 	 * Update the specified resource in storage.

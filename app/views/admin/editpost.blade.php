@@ -25,9 +25,6 @@
     
             <input type="text" name="title" class="form-control"  value= "{{$articles->title}}">
             
-
-             
-
             <textarea name="body">{{$articles->body}}</textarea>
 
            <h4 class="box-title">Select Category</h4>
@@ -67,10 +64,6 @@
             filemanager_title:"Responsive Filemanager" ,
             
             external_plugins: { "filemanager" : "{{URL::to('filemanager/plugin.min.js')}}"}
-
-
-
-
         });
     </script>
 @stop
